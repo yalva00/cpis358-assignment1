@@ -2,9 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CPIS358 Assignment 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunny Island Beauty Salon - Home</title>
+
+  <!-- font-family -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Hello, my website!</h1>
+
+  <header>
+    <h1>Sunny Island Beauty Salon</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+<img class="main-image" src="images/salon-home.jpg" alt="Salon" usemap="#salonmap" width="800"><map name="salonmap">
+  <area shape="rect" coords="20,0,330,400" href="about.html" alt="About Us">
+</map>
+
+    <section id="intro">
+      <article>
+        <h2>Welcome to Sunny Island</h2>
+<p>
+  Welcome to Sunny Island Beauty Salon, your destination for beauty and
+  relaxation. Our website makes it easy to explore our services, check our
+  prices, and book your appointment from anywhere, without calling or waiting.
+  Create an account to manage your bookings and enjoy a smooth, stress-free
+  experience.
+</p>   
+   </article>
+    </section>
+
+<section id="services">
+  <h2>Feel free to...</h2>
+
+  <div class="services-row">
+    <div class="service-card">
+      <img src="images/haircut-icon.svg" alt="Haircut">
+      <span>Haircut</span>
+    </div>
+
+    <div class="service-card">
+      <img src="images/makeup-icon.svg" alt="Makeup">
+      <span>Makeup</span>
+    </div>
+
+    <div class="service-card">
+      <img src="images/hairstyle-icon.svg" alt="Hair Style">
+      <span>Hair Style</span>
+    </div>
+  </div>
+</section>
+
+    <section id="prices">
+      <h2>Prices</h2>
+      <table border="1">
+        <tr><th>Service</th><th>Duration</th><th>Price</th></tr>
+        <tr><td>Haircut</td><td>45 min</td><td>100 SAR</td></tr>
+        <tr><td>Makeup</td><td>60 min</td><td>200 SAR</td></tr>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#intro">Back to top</a>
+  </footer>
+  <script src="script.js"></script>
+
 </body>
 </html>
