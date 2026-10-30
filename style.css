@@ -1,65 +1,162 @@
+/* ===== Colors: غيّري أي لون من هنا فقط ===== */
+:root {
+  --cream: #3B421D;        /* خلفية الصفحة */
+  --beige: #EADFC4;        /* الهيدر */
+  --soft-yellow: #f0dc8f;  /* أصفر خفيف */
+  --leaf-light: #a9bf8a;   /* أخضر فاتح */
+  --leaf: #7d9b5f;         /* أخضر */
+  --leaf-dark: #5e7d45;    /* أخضر غامق */
+  --brown: #8D6510;
+  --brown-dark: #4a3324;
+  --red: #8D6510;          /* أحمر غامق */
+}
+
+/* ===== General ===== */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #fff5f8;
-  color: #333;
+font-family: 'Manrope', sans-serif; 
+ background-color: var(--cream);
+  color: var(--brown-dark);
 }
+
 h1, h2 {
   font-family: 'Playfair Display', serif;
+}
+
+h2 {
+  color: var(--red);
+
+}
+/* ===== Intro Section ===== */
+#intro {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+#intro p {
+  color: var(--brown);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+#services {
+  text-align: center;
 }
 main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px 20px 20px;   /* فوق 50 عشان الأوراق المعلقة */
 }
 
-h2 {
-  color: #c2185b;
-}
-
-/* ===== Header: salon name in the center ===== */
+/* ===== Header ===== */
 header {
-  background-color: #f8bbd0;
-  text-align: center;
-  padding: 20px 0 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--beige);
+  padding: 8px 0 0;
+  clip-path: inset(0 0 -60px 0);   /* يقص الأشعة من الجوانب ويترك الأوراق تتدلى تحت */
 }
 
 header h1 {
-  margin: 0;
-  color: #880e4f;
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin: 0 0 6px;
+  color: var(--brown);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9),
+               0 0 18px rgba(240, 220, 143, 0.9);
 }
 
-/* ===== Menu ===== */
+
+
+/* ===== Menu with hanging leaves ===== */
 nav {
-  position: sticky;      
-  top: 0;
-  z-index: 100;         
-  background-color: #f8bbd0;
-  padding: 10px 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 18px;
+  padding: 0 20px;
 }
 
 nav a {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 8px 16px;
-  color: #880e4f;
+  position: relative;
+  padding: 4px 14px 10px;
+  font-size: 0.9rem;
+  color: var(--brown-dark);
   text-decoration: none;
-  border-radius: 20px;
+  transform-origin: 50% 100%;      /* يميل من نقطة تعليق الورقة */
+  transition: transform 0.3s, color 0.3s;
 }
+
+/* الورقة المعلقة تحت كل رابط */
+nav a::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 4px);
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  background-color: var(--leaf);
+  border-radius: 0 100% 0 100%;    /* شكل الورقة */
+  transform: rotate(45deg);
+  box-shadow: 2px 3px 5px rgba(74, 51, 36, 0.25);
+}
+
+nav a:nth-child(2)::after { background-color: var(--leaf-light); }
+nav a:nth-child(3)::after { background-color: var(--leaf-dark); }
 
 nav a:hover {
-  background-color: #fff5f8;
+  color: var(--red);
+  transform: rotate(-4deg);
 }
 
-/* ===== Images ===== */
-.main-image {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  border: 4px solid #f8bbd0;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+nav a:active {
+  transform: rotate(-8deg);
 }
+
+/* ===== Image slider ===== */
+.outer-container {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.inner-container {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.inner-container img {
+  width: 700px;
+  height: 380px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(250, 246, 236, 0.85);
+  color: var(--brown);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
 
 /* ===== Services cards ===== */
 .services-row {
@@ -70,26 +167,21 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
+
 .service-card {
   width: 220px;
   padding: 20px;
   background: #fff;
-  border: 2px solid #f8bbd0;
+  border: none;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
   text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
 }
-
 .service-card:hover {
   transform: scale(1.05);
-}
-
-.service-card.active {
-  transform: scale(1.15);
-  border-color: #c2185b;
-  box-shadow: 0 8px 20px rgba(194, 24, 91, 0.3);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -106,21 +198,6 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* ===== Table ===== */
-table {
-  margin: 0 auto;
-  border-collapse: collapse;
-  background: #fff;
-}
-
-th, td {
-  padding: 10px 20px;
-  border: 1px solid #f8bbd0;
-}
-
-th {
-  background-color: #f8bbd0;
-}
 
 /* ===== Footer ===== */
 footer {
