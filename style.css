@@ -1,51 +1,51 @@
-/* ===== Colors: غيّري أي لون من هنا فقط ===== */
 :root {
-  --cream: #3B421D;        /* خلفية الصفحة */
-  --beige: #EADFC4;        /* الهيدر */
-  --soft-yellow: #f0dc8f;  /* أصفر خفيف */
-  --leaf-light: #a9bf8a;   /* أخضر فاتح */
-  --leaf: #7d9b5f;         /* أخضر */
-  --leaf-dark: #5e7d45;    /* أخضر غامق */
+  --olive: #3B421D;        
+  --beige: #EADFC4;        
   --brown: #8D6510;
   --brown-dark: #4a3324;
-  --red: #8D6510;          /* أحمر غامق */
+  --gold: #D9A21B;         
+  --text-soft: #D9CBA3;    
 }
 
 /* ===== General ===== */
 body {
   margin: 0;
-font-family: 'Manrope', sans-serif; 
- background-color: var(--cream);
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--olive);
   color: var(--brown-dark);
 }
 
 h1, h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display SC', serif;
 }
 
 h2 {
-  color: var(--red);
-
+  color: var(--gold);
 }
-/* ===== Intro Section ===== */
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px 20px;
+}
+
+/* ===== Intro & Services ===== */
 #intro {
   text-align: center;
   margin-bottom: 60px;
 }
 
-#intro p {
-  color: var(--brown);
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.8;
-}
 #services {
   text-align: center;
 }
-main {
-  max-width: 1000px;
+
+#intro p,
+#services p {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 50px 20px 20px;   /* فوق 50 عشان الأوراق المعلقة */
+  line-height: 1.8;
+  color: var(--text-soft);
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* ===== Header ===== */
@@ -55,7 +55,6 @@ header {
   z-index: 100;
   background-color: var(--beige);
   padding: 8px 0 0;
-  clip-path: inset(0 0 -60px 0);   /* يقص الأشعة من الجوانب ويترك الأوراق تتدلى تحت */
 }
 
 header h1 {
@@ -70,9 +69,7 @@ header h1 {
                0 0 18px rgba(240, 220, 143, 0.9);
 }
 
-
-
-/* ===== Menu with hanging leaves ===== */
+/* ===== Menu ===== */
 nav {
   position: relative;
   z-index: 1;
@@ -82,40 +79,36 @@ nav {
 }
 
 nav a {
-  position: relative;
   padding: 4px 14px 10px;
   font-size: 0.9rem;
   color: var(--brown-dark);
   text-decoration: none;
-  transform-origin: 50% 100%;      /* يميل من نقطة تعليق الورقة */
-  transition: transform 0.3s, color 0.3s;
+  border-radius: 10px;
+  transition: background-color 0.25s, box-shadow 0.25s;
 }
-
-/* الورقة المعلقة تحت كل رابط */
-nav a::after {
-  content: "";
-  position: absolute;
-  top: calc(100% - 4px);
-  left: 50%;
-  width: 22px;
-  height: 22px;
-  margin-left: -11px;
-  background-color: var(--leaf);
-  border-radius: 0 100% 0 100%;    /* شكل الورقة */
-  transform: rotate(45deg);
-  box-shadow: 2px 3px 5px rgba(74, 51, 36, 0.25);
-}
-
-nav a:nth-child(2)::after { background-color: var(--leaf-light); }
-nav a:nth-child(3)::after { background-color: var(--leaf-dark); }
 
 nav a:hover {
-  color: var(--red);
-  transform: rotate(-4deg);
+  background-color: rgba(74, 51, 36, 0.12);
+  box-shadow: 0 0 0 1px rgba(74, 51, 36, 0.25),
+              0 3px 8px rgba(74, 51, 36, 0.25);
 }
 
-nav a:active {
-  transform: rotate(-8deg);
+.garland {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sprig {
+  position: absolute;
+  top: 0;
+  width: 70px;
+  margin-left: -35px;
+  background: url("images/sprig.svg") no-repeat center bottom / 70px auto;
 }
 
 /* ===== Image slider ===== */
@@ -167,23 +160,20 @@ nav a:active {
   flex-wrap: wrap;
 }
 
-
 .service-card {
   width: 220px;
   padding: 20px;
   background: #fff;
-  border: none;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
   text-align: center;
-  transition: transform 0.3s ease,
-              box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .service-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
-
 
 .service-card img {
   width: 120px;
@@ -198,9 +188,12 @@ nav a:active {
   font-weight: bold;
 }
 
-
 /* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 20px;
+}
+
+footer a {
+  color: var(--gold);
 }
