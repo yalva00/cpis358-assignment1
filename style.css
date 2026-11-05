@@ -197,3 +197,189 @@ footer {
 footer a {
   color: var(--gold);
 }
+
+/* ===== Login & Sign-up ===== */
+.auth-container {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.auth-side,
+.auth-card {
+    flex: 1;
+    min-width: 280px;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.auth-side {
+    background-color: rgba(234, 223, 196, 0.12);
+    border: 1px solid var(--gold);
+    color: var(--text-soft);
+}
+
+    .auth-side img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+.benefits li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.auth-card {
+    background-color: var(--beige);
+    border: 2px solid var(--gold);
+}
+
+    .auth-card h2 {
+        margin-top: 0;
+        text-align: center;
+        color: var(--brown);
+    }
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+
+    .form-group input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid var(--brown);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.95rem;
+    }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(217, 162, 27, 0.3);
+        }
+
+.input-error {
+    border: 2px solid #c0392b !important;
+}
+
+.error-text {
+    display: block;
+    min-height: 18px;
+    margin-top: 4px;
+    color: #c0392b;
+    font-size: 0.8rem;
+}
+
+.password-box {
+    display: flex;
+    gap: 8px;
+}
+
+.show-btn {
+    padding: 0 14px;
+    border: 1px solid var(--brown);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--brown);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(74, 51, 36, 0.3);
+}
+
+    .btn:hover {
+        background-color: var(--brown-dark);
+    }
+
+.form-message {
+    min-height: 20px;
+    margin: 12px 0 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.switch-page {
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+    .switch-page a {
+        color: var(--brown);
+        font-weight: 600;
+    }
+
+
+/* ===== Sign-up only ===== */
+.strength-bar {
+    height: 6px;
+    margin-top: 8px;
+    border-radius: 3px;
+    background-color: rgba(74, 51, 36, 0.15);
+    overflow: hidden;
+}
+
+#strengthFill {
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-text {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+    .checkbox-group input {
+        width: auto;
+    }
+
+    .checkbox-group label {
+        margin: 0;
+        font-weight: 500;
+    }
+
+.welcome-card {
+    margin-top: 16px;
+    padding: 16px;
+    border: 2px dashed #2e7d32;
+    border-radius: 12px;
+    background-color: #eef7ee;
+    text-align: center;
+}
+
+    .welcome-card h3 {
+        margin: 0 0 6px;
+        color: #2e7d32;
+    }

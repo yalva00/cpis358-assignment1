@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny &amp; Land Beauty Salon - Login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Master page: same header & menu on every page -->
+    <header>
+        <h1>Sunny &amp; Land<br>Beauty Salon</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login" class="auth-container">
+
+            <!-- Left side: picture + list -->
+            <article class="auth-side">
+                <img src="images/salon-home.jpg" alt="Sunny & Land salon">
+                <h2>Welcome Back</h2>
+                <!-- List -->
+                <ul class="benefits">
+                    <li>Book your appointment in seconds</li>
+                    <li>See and cancel your bookings</li>
+                    <li>Get our latest offers first</li>
+                </ul>
+            </article>
+
+            <!-- Right side: the login form -->
+            <article class="auth-card">
+                <h2>Login</h2>
+
+                <!-- Form: onsubmit calls our function -->
+                <form id="loginForm" novalidate onsubmit="return validateLogin()">
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="example@email.com">
+                        <small class="error-text" id="loginEmailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-box">
+                            <input type="password" id="loginPassword" placeholder="Your password">
+                            <button type="button" class="show-btn" onclick="togglePassword()">Show</button>
+                        </div>
+                        <small class="error-text" id="loginPasswordError"></small>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+
+                    <!-- This text changes with JavaScript -->
+                    <p id="loginMessage" class="form-message"></p>
+                </form>
+
+                <p class="switch-page">
+                    Don't have an account? <a href="signup.html">Sign up</a>
+                </p>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <a href="#login">Back to top</a>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Embedded JavaScript (inside the page) -->
+    <script>
+        // Show or hide the password
+        function togglePassword() {
+        const input = document.getElementById("loginPassword");
+        const button = document.querySelector(".show-btn");
+
+        if (input.type === "password") {
+        input.type = "text";
+        button.textContent = "Hide";
+        } else {
+        input.type = "password";
+        button.textContent = "Show";
+        }
+        }
+
+        // Check the login form before sending it
+        function validateLogin() {
+        const email = document.getElementById("loginEmail");
+        const password = document.getElementById("loginPassword");
+        const message = document.getElementById("loginMessage");
+        let isValid = true;
+
+        // Clear old errors
+        clearError(email, "loginEmailError");
+        clearError(password, "loginPasswordError");
+        message.textContent = "";
+
+        // Email check
+        if (email.value.trim() === "") {
+        showError(email, "loginEmailError", "Please enter your email");
+        isValid = false;
+        } else if (!email.value.includes("@") || !email.value.includes(".")) {
+        showError(email, "loginEmailError", "Email is not valid");
+        isValid = false;
+        }
+
+        // Password check
+        if (password.value === "") {
+        showError(password, "loginPasswordError", "Please enter your password");
+        isValid = false;
+        } else if (password.value.length < 8) {
+        showError(password, "loginPasswordError", "Password must be at least 8 characters");
+        isValid = false;
+        }
+
+        // Change the text and its color
+        if (isValid) {
+        message.textContent = "Welcome back! You are logged in.";
+        message.style.color = "green";
+        } else {
+        message.textContent = "Please fix the errors above.";
+        message.style.color = "#c0392b";
+        }
+
+        return false; // stop the page from reloading (static site)
+        }
+    </script>
+
+</body>
+</html>
