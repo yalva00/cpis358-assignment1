@@ -11,14 +11,12 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .about-image {
+      .about-image {
       display: block;
       width: 100%;
-      max-width: 900px;
-      height: 420px;
+      height: 320px;
       object-fit: cover;
-      margin: 0 auto 30px;
-      border-radius: 16px;
+      opacity: 0.70;
     }
 
     #about {
@@ -46,10 +44,10 @@
       <a href="about.html">About Us</a>
     </nav>
   </header>
+      <img class="about-image" src="images/salon-outside.jpg" alt="Inside our salon">
 
   <main>
     <section id="about">
-      <img class="about-image" src="images/salon-outside.jpg" alt="Inside our salon">
 
       <article>
         <h2 style="letter-spacing: 2px;">About Us</h2>
@@ -66,6 +64,43 @@
         </p>
       </article>
     </section>
+
+
+   <details>
+  <summary>Opening Hours</summary>
+  <table class="info-table">
+    <tr>
+      <th>Day</th>
+      <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+    </tr>
+    <tr>
+      <th>Hours</th>
+      <td>10 AM - 9 PM</td><td>10 AM - 9 PM</td><td>10 AM - 9 PM</td>
+      <td>10 AM - 9 PM</td><td>10 AM - 9 PM</td>
+      <td>2 PM - 10 PM</td><td>2 PM - 10 PM</td>
+    </tr>
+  </table>
+</details>
+
+<details>
+  <summary>Prices &amp; Services</summary>
+  <table class="info-table">
+    <tr>
+      <th>Service</th>
+      <th>Haircut</th><th>Hair Coloring</th><th>Hair Styling</th><th>Makeup</th>
+    </tr>
+    <tr>
+      <th>Duration</th>
+      <td>45 min</td><td>2 hours</td><td>60 min</td><td>60 min</td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>100 SAR</td><td>350 SAR</td><td>150 SAR</td><td>200 SAR</td>
+    </tr>
+  </table>
+</details>
+
+
   </main>
 
   <footer>
