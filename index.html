@@ -83,8 +83,15 @@
 
   <footer>
     <a href="#intro">Back to top</a>
+    <p>&copy; <span id="year"></span> Sunny &amp; Land Beauty Salon</p>
   </footer>
+
   <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+
 
 </body>
 </html>
