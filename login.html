@@ -29,8 +29,14 @@
 
             <!-- Left side: picture + list -->
             <article class="auth-side">
-                <img src="images/login-page.jpg" alt="Salon entrance door">
+
+                <!-- Requirement: Image Map (the middle of the picture links to About Us) -->
+                <img src="images/login-page.jpg" alt="Salon entrance door" usemap="#loginMap">
+                <map name="loginMap">
+                    <area shape="rect" coords="113,0,313,220" href="about.html" alt="About Us" title="About Us"> </map>
+
                 <h2>Welcome Back</h2>
+
                 <!-- List -->
                 <ul class="benefits">
                     <li>Book your appointment in seconds</li>
@@ -56,7 +62,7 @@
                         <label for="loginPassword">Password</label>
                         <div class="password-box">
                             <input type="password" id="loginPassword" placeholder="Your password">
-                            <button type="button" class="show-btn" onclick="togglePassword()">Show</button>
+                            <button type="button" class="show-btn" id="showBtn" onclick="togglePassword()">Show</button>
                         </div>
                         <small class="error-text" id="loginPasswordError"></small>
                     </div>
@@ -83,43 +89,47 @@
 
     <!-- Embedded JavaScript (inside the page) -->
     <script>
-        // Show or hide the password
+        // Requirement: Function + Event (onclick) + if/else: show or hide the password
         function togglePassword() {
-        const input = document.getElementById("loginPassword");
-        const button = document.querySelector(".show-btn");
+        var input = document.getElementById("loginPassword");
+        var button = document.getElementById("showBtn");
 
-        if (input.type === "password") {
+        if (input.type == "password") {
         input.type = "text";
-        button.textContent = "Hide";
+        button.innerHTML = "Hide";
         } else {
         input.type = "password";
-        button.textContent = "Show";
+        button.innerHTML = "Show";
         }
         }
 
-        // Check the login form before sending it
+        // Requirement: Form Validation (runs when the form is submitted)
         function validateLogin() {
-        const email = document.getElementById("loginEmail");
-        const password = document.getElementById("loginPassword");
-        const message = document.getElementById("loginMessage");
-        let isValid = true;
+        var email = document.getElementById("loginEmail");
+        var password = document.getElementById("loginPassword");
+        var message = document.getElementById("loginMessage");
+        var isValid = true;
 
         // Clear old errors
         clearError(email, "loginEmailError");
         clearError(password, "loginPasswordError");
-        message.textContent = "";
+        message.innerHTML = "";
 
         // Email check
-        if (email.value.trim() === "") {
-        showError(email, "loginEmailError", "Please enter your email");
-        isValid = false;
-        } else if (!email.value.includes("@") || !email.value.includes(".")) {
-        showError(email, "loginEmailError", "Email is not valid");
-        isValid = false;
-        }
+         var emailText = email.value.trim();
+         var atPosition = emailText.indexOf("@");
+         var dotPosition = emailText.lastIndexOf(".");
+
+         if (emailText == "") {
+             showError(email, "loginEmailError", "Please enter your email");
+             isValid = false;
+         } else if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition == emailText.length - 1 || emailText.includes(" ")) {
+                showError(email, "loginEmailError", "Email is not valid");
+                isValid = false;
+            }
 
         // Password check
-        if (password.value === "") {
+        if (password.value == "") {
         showError(password, "loginPasswordError", "Please enter your password");
         isValid = false;
         } else if (password.value.length < 8) {
@@ -127,12 +137,12 @@
         isValid = false;
         }
 
-        // Change the text and its color
+        // Requirement: Change HTML text and CSS style with JavaScript
         if (isValid) {
-        message.textContent = "Welcome back! You are logged in.";
+        message.innerHTML = "Welcome back! You are logged in.";
         message.style.color = "green";
         } else {
-        message.textContent = "Please fix the errors above.";
+        message.innerHTML = "Please fix the errors above.";
         message.style.color = "#c0392b";
         }
 
