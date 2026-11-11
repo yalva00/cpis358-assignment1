@@ -39,9 +39,9 @@
 
                 <!-- List -->
                 <ul class="benefits">
-                    <li>Book your appointment in seconds</li>
-                    <li>See and cancel your bookings</li>
-                    <li>Get our latest offers first</li>
+                    <li>See all our services and prices in one place</li>
+                    <li>Check our opening hours anytime</li>
+                    <li>Be the first to hear about our offers</li>
                 </ul>
             </article>
 
@@ -60,10 +60,7 @@
 
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
-                        <div class="password-box">
-                            <input type="password" id="loginPassword" placeholder="Your password">
-                            <button type="button" class="show-btn" id="showBtn" onclick="togglePassword()">Show</button>
-                        </div>
+                        <input type="password" id="loginPassword" placeholder="Your password">
                         <small class="error-text" id="loginPasswordError"></small>
                     </div>
 
@@ -89,19 +86,7 @@
 
     <!-- Embedded JavaScript (inside the page) -->
     <script>
-        // Requirement: Function + Event (onclick) + if/else: show or hide the password
-        function togglePassword() {
-        var input = document.getElementById("loginPassword");
-        var button = document.getElementById("showBtn");
-
-        if (input.type == "password") {
-        input.type = "text";
-        button.innerHTML = "Hide";
-        } else {
-        input.type = "password";
-        button.innerHTML = "Show";
-        }
-        }
+        
 
         // Requirement: Form Validation (runs when the form is submitted)
         function validateLogin() {
