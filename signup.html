@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunny &amp; Land Beauty Salon - Sign Up</title>
-
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- External CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="top">
 
-    <!-- Master page: same header & menu on every page -->
+    <!-- Header & menu (same on every page) -->
     <header>
         <h1>Sunny &amp; Land<br>Beauty Salon</h1>
         <nav>
@@ -27,64 +28,67 @@
     <main>
         <section id="signup" class="auth-container">
 
-            <!-- Left side: picture + list -->
+            <!-- Left box: picture and list -->
             <article class="auth-side">
-                <img src="images/signup-welcome.jpg" alt="Welcoming salon team">
+                <img src="images/signup-welcome.jpg" alt="Welcoming salon team" usemap="#signupMap">
+                <map name="signupMap">
+                    <area shape="rect" coords="113,0,313,220" href="about.html" alt="About Us" title="About Us">
+                </map>
                 <h2>Join Sunny &amp; Land</h2>
-                <p>Create your account to book your appointments online.</p>
+                <p>Create your account to enjoy a better salon experience.</p>
 
                 <!-- List -->
                 <ul class="benefits">
-                    <li>Book any service in a few clicks</li>
-                    <li>Save your favorite stylist</li>
-                    <li>Get reminders before your appointment</li>
+                    <li>See all our services and prices in one place</li>
+                    <li>Check our opening hours anytime</li>
+                    <li>Be the first to hear about our offers</li>
                 </ul>
             </article>
 
-            <!-- Right side: the sign-up form -->
+            <!-- Right box: the sign up form -->
             <article class="auth-card">
                 <h2>Sign Up</h2>
 
                 <!-- Form: onsubmit calls validateSignup() from script.js -->
                 <form id="signupForm" novalidate onsubmit="return validateSignup()">
-
+                    <!-- Name field -->
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
                         <input type="text" id="fullName" placeholder="Your name">
                         <small class="error-text" id="nameError"></small>
                     </div>
-
+                    <!-- Email field -->
                     <div class="form-group">
                         <label for="signupEmail">Email</label>
                         <input type="email" id="signupEmail" placeholder="example@email.com">
                         <small class="error-text" id="signupEmailError"></small>
                     </div>
-
+                    <!-- Phone field -->
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" placeholder="05XXXXXXXX">
                         <small class="error-text" id="phoneError"></small>
                     </div>
-
+                    <!-- Password field woth a strength bar that updates while typing  -->
                     <div class="form-group">
                         <label for="signupPassword">Password</label>
-                        <!-- oninput: runs every time a letter is typed -->
+
                         <input type="password" id="signupPassword" placeholder="Create a password"
                                oninput="checkPasswordStrength()">
-                        <!-- Strength bar: changes with JavaScript -->
+
                         <div class="strength-bar">
                             <div id="strengthFill"></div>
                         </div>
                         <small id="strengthText" class="strength-text"></small>
                         <small class="error-text" id="signupPasswordError"></small>
                     </div>
-
+                    <!-- Confirm password field -->
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password</label>
                         <input type="password" id="confirmPassword" placeholder="Repeat your password">
                         <small class="error-text" id="confirmError"></small>
                     </div>
-
+                    <!-- Checkbox -->
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="terms">
                         <label for="terms">I agree to the salon booking terms</label>
@@ -106,7 +110,7 @@
     </main>
 
     <footer>
-        <a href="#signup">Back to top</a>
+        <a href="#top">Back to top</a>
     </footer>
 
     <!-- External JavaScript -->

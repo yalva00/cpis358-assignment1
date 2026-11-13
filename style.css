@@ -200,7 +200,14 @@ footer a {
   color: var(--gold);
 }
 
-/* Login & Sign-up  */
+/* ===== Login & Sign Up ===== */
+
+/* Smooth scroll when "Back to top" is clicked */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Puts the two boxes next to each other */
 .auth-container {
     display: flex;
     gap: 30px;
@@ -209,6 +216,7 @@ footer a {
     margin-top: 40px;
 }
 
+/* Shared look for both boxes */
 .auth-side,
 .auth-card {
     flex: 1;
@@ -218,6 +226,7 @@ footer a {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
+/* Left box: picture and list */
 .auth-side {
     background-color: rgba(234, 223, 196, 0.12);
     border: 1px solid var(--gold);
@@ -236,6 +245,7 @@ footer a {
     line-height: 1.6;
 }
 
+/* Right box: the form */
 .auth-card {
     background-color: var(--beige);
     border: 2px solid var(--gold);
@@ -247,6 +257,7 @@ footer a {
         color: var(--brown);
     }
 
+/* One field: label, input and error message */
 .form-group {
     margin-bottom: 16px;
 }
@@ -267,16 +278,14 @@ footer a {
         font-size: 0.95rem;
     }
 
+        /* Gold glow when the user clicks inside a field */
         .form-group input:focus {
             outline: none;
             border-color: var(--gold);
             box-shadow: 0 0 0 3px rgba(217, 162, 27, 0.3);
         }
 
-.input-error {
-    border: 2px solid #c0392b !important;
-}
-
+/* Red error message under a field */
 .error-text {
     display: block;
     min-height: 18px;
@@ -285,20 +294,7 @@ footer a {
     font-size: 0.8rem;
 }
 
-.password-box {
-    display: flex;
-    gap: 8px;
-}
-
-.show-btn {
-    padding: 0 14px;
-    border: 1px solid var(--brown);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--brown);
-    cursor: pointer;
-}
-
+/* Main button */
 .btn {
     width: 100%;
     padding: 12px;
@@ -316,6 +312,7 @@ footer a {
         background-color: var(--brown-dark);
     }
 
+/* Message under the Login button */
 .form-message {
     min-height: 20px;
     margin: 12px 0 0;
@@ -323,6 +320,7 @@ footer a {
     font-weight: 600;
 }
 
+/* "Don't have an account?" link */
 .switch-page {
     text-align: center;
     font-size: 0.9rem;
@@ -333,8 +331,7 @@ footer a {
         font-weight: 600;
     }
 
-
-/* ===== Sign-up only ===== */
+/* Password strength bar (sign up) */
 .strength-bar {
     height: 6px;
     margin-top: 8px;
@@ -356,6 +353,7 @@ footer a {
     font-weight: 600;
 }
 
+/* Checkbox and its text on one line */
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -372,6 +370,7 @@ footer a {
         font-weight: 500;
     }
 
+/* Welcome card after signing up */
 .welcome-card {
     margin-top: 16px;
     padding: 16px;
@@ -385,7 +384,6 @@ footer a {
         margin: 0 0 6px;
         color: #2e7d32;
     }
-
 
 
 /* About: hours & prices tables */

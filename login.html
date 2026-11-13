@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunny &amp; Land Beauty Salon - Login</title>
 
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- External CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="top">
 
-    <!-- Master page: same header & menu on every page -->
+    <!-- Header & menu (same on every page) -->
     <header>
         <h1>Sunny &amp; Land<br>Beauty Salon</h1>
         <nav>
@@ -27,37 +29,42 @@
     <main>
         <section id="login" class="auth-container">
 
-            <!-- Left side: picture + list -->
+            <!-- Left box: picture and list -->
             <article class="auth-side">
-                <img src="images/login-page.jpg" alt="Salon entrance door">
+
+                <!-- Image map (the middle of the picture links to about us) -->
+                <img src="images/login-page.jpg" alt="Salon entrance door" usemap="#loginMap">
+                <map name="loginMap">
+                    <area shape="rect" coords="113,0,313,220" href="about.html" alt="About Us" title="About Us">
+                </map>
+
                 <h2>Welcome Back</h2>
+
                 <!-- List -->
                 <ul class="benefits">
-                    <li>Book your appointment in seconds</li>
-                    <li>See and cancel your bookings</li>
-                    <li>Get our latest offers first</li>
+                    <li>See all our services and prices in one place</li>
+                    <li>Check our opening hours anytime</li>
+                    <li>Be the first to hear about our offers</li>
                 </ul>
             </article>
 
-            <!-- Right side: the login form -->
+            <!-- Right box: the login form -->
             <article class="auth-card">
                 <h2>Login</h2>
 
                 <!-- Form: onsubmit calls our function -->
                 <form id="loginForm" novalidate onsubmit="return validateLogin()">
 
+                    <!-- Email field -->
                     <div class="form-group">
                         <label for="loginEmail">Email</label>
                         <input type="email" id="loginEmail" placeholder="example@email.com">
                         <small class="error-text" id="loginEmailError"></small>
                     </div>
-
+                    <!-- Password field -->
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
-                        <div class="password-box">
-                            <input type="password" id="loginPassword" placeholder="Your password">
-                            <button type="button" class="show-btn" onclick="togglePassword()">Show</button>
-                        </div>
+                        <input type="password" id="loginPassword" placeholder="Your password">
                         <small class="error-text" id="loginPasswordError"></small>
                     </div>
 
@@ -76,50 +83,43 @@
     </main>
 
     <footer>
-        <a href="#login">Back to top</a>
+        <a href="#top">Back to top</a>
     </footer>
 
+    <!-- External javascript file-->
     <script src="script.js"></script>
 
     <!-- Embedded JavaScript (inside the page) -->
     <script>
-        // Show or hide the password
-        function togglePassword() {
-        const input = document.getElementById("loginPassword");
-        const button = document.querySelector(".show-btn");
 
-        if (input.type === "password") {
-        input.type = "text";
-        button.textContent = "Hide";
-        } else {
-        input.type = "password";
-        button.textContent = "Show";
-        }
-        }
 
-        // Check the login form before sending it
+        // Requirement: Form Validation (runs when the form is submitted)
         function validateLogin() {
-        const email = document.getElementById("loginEmail");
-        const password = document.getElementById("loginPassword");
-        const message = document.getElementById("loginMessage");
-        let isValid = true;
+        var email = document.getElementById("loginEmail");
+        var password = document.getElementById("loginPassword");
+        var message = document.getElementById("loginMessage");
+        var isValid = true;
 
-        // Clear old errors
+        // Clear old errors mesaages
         clearError(email, "loginEmailError");
         clearError(password, "loginPasswordError");
-        message.textContent = "";
+        message.innerHTML = "";
 
         // Email check
-        if (email.value.trim() === "") {
+        var emailText = email.value.trim();
+        var atPosition = emailText.indexOf("@");
+        var dotPosition = emailText.lastIndexOf(".");
+
+        if (emailText == "") {
         showError(email, "loginEmailError", "Please enter your email");
         isValid = false;
-        } else if (!email.value.includes("@") || !email.value.includes(".")) {
+        } else if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition == emailText.length - 1 || emailText.includes(" ")) {
         showError(email, "loginEmailError", "Email is not valid");
         isValid = false;
         }
 
         // Password check
-        if (password.value === "") {
+        if (password.value == "") {
         showError(password, "loginPasswordError", "Please enter your password");
         isValid = false;
         } else if (password.value.length < 8) {
@@ -127,12 +127,12 @@
         isValid = false;
         }
 
-        // Change the text and its color
+        // Show a green or a red message under button
         if (isValid) {
-        message.textContent = "Welcome back! You are logged in.";
+        message.innerHTML = "Welcome back! You are logged in.";
         message.style.color = "green";
         } else {
-        message.textContent = "Please fix the errors above.";
+        message.innerHTML = "Please fix the errors above.";
         message.style.color = "#c0392b";
         }
 
