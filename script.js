@@ -73,13 +73,13 @@ if (headerEl) {
 
 // ===== Form helpers (used by Login & Sign-up) =====
 
-// Requirement: Function - show an error message under a field and make its border red
+// show an error message under a field and make its border red
 function showError(input, errorId, text) {
     document.getElementById(errorId).innerHTML = text;
     input.style.border = "2px solid #c0392b";
 }
 
-// Requirement: Function - remove the error message and the red border
+// remove the error message and the red border
 function clearError(input, errorId) {
     document.getElementById(errorId).innerHTML = "";
     input.style.border = "";
@@ -87,7 +87,7 @@ function clearError(input, errorId) {
 
 // ===== Sign-up page =====
 
-// Requirement: while loop - count capital letters and numbers in the password
+// count capital letters and numbers in the password
 function countPasswordParts(password) {
     var upper = 0;
     var numbers = 0;
@@ -108,19 +108,20 @@ function countPasswordParts(password) {
     return { upper: upper, numbers: numbers };
 }
 
-// Requirement: Event (oninput) + change CSS style with JavaScript (strength bar)
+// Update the strengh bar while the user types the password
 function checkPasswordStrength() {
     var password = document.getElementById("signupPassword").value;
     var fill = document.getElementById("strengthFill");
     var text = document.getElementById("strengthText");
     var parts = countPasswordParts(password);
 
-    // Give 1 point for each rule
+    // Give 1 point for each rule the password do
     var score = 0;
     if (password.length >= 8) score++;
     if (parts.upper >= 1) score++;
     if (parts.numbers >= 1) score++;
 
+    // Change the bar width color and text based on the points
     if (password == "") {
         fill.style.width = "0%";
         text.innerHTML = "";
@@ -142,7 +143,7 @@ function checkPasswordStrength() {
     }
 }
 
-// Requirement: Form Validation (runs when the sign-up form is submitted)
+//  Form Validation 
 function validateSignup() {
     var name = document.getElementById("fullName");
     var email = document.getElementById("signupEmail");
@@ -160,13 +161,13 @@ function validateSignup() {
     clearError(confirm, "confirmError");
     document.getElementById("termsError").innerHTML = "";
 
-    // Name: at least 3 letters
+    // full name: at least 3 letters
     if (name.value.trim().length < 3) {
         showError(name, "nameError", "Name must be at least 3 letters");
         isValid = false;
     }
 
-    // Email: name @ site . ending, no spaces
+    // Email must have a name, @ , site name and dot (with no spaces in between)
     var emailText = email.value.trim();
     var atPosition = emailText.indexOf("@");
     var dotPosition = emailText.lastIndexOf(".");
@@ -179,7 +180,7 @@ function validateSignup() {
         isValid = false;
     }
 
-    // Requirement: for loop - check that the phone has numbers only
+    // for loop to check that the phone has numbers only
     var phoneValue = phone.value.trim();
     var onlyNumbers = true;
     for (var i = 0; i < phoneValue.length; i++) {
@@ -187,20 +188,20 @@ function validateSignup() {
             onlyNumbers = false;
         }
     }
-
+    // check if its 10 numbers that start with 05
     if (phoneValue.length != 10 || !phoneValue.startsWith("05") || !onlyNumbers) {
         showError(phone, "phoneError", "Phone must be 10 numbers and start with 05");
         isValid = false;
     }
 
-    // Password: same 3 rules as the strength bar
+    // Password: 8+ characters ,capital letter and a number
     var parts = countPasswordParts(password.value);
     if (password.value.length < 8 || parts.upper < 1 || parts.numbers < 1) {
         showError(password, "signupPasswordError", "Password must have 8+ characters, a capital letter and a number");
         isValid = false;
     }
 
-    // Confirm password must be the same
+    // Confirm password must be the same as password
     if (confirm.value == "" || confirm.value != password.value) {
         showError(confirm, "confirmError", "Passwords do not match");
         isValid = false;
@@ -219,7 +220,7 @@ function validateSignup() {
     return false; // stop the page from reloading (static site)
 }
 
-// Requirement: Dynamic elements - create a new welcome card with JavaScript
+//  Dynamic elements (create a new welcome card with JavaScript)
 function showWelcome(name, email) {
     var box = document.getElementById("welcomeBox");
     box.innerHTML = "";
@@ -236,7 +237,7 @@ function showWelcome(name, email) {
     card.appendChild(title);
     card.appendChild(text);
     box.appendChild(card);
-
+    // clear the form and the strengh bar
     document.getElementById("signupForm").reset();
     checkPasswordStrength();
 }

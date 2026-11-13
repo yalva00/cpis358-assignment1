@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunny &amp; Land Beauty Salon - Login</title>
 
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- External CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="top">
 
-    <!-- Master page: same header & menu on every page -->
+    <!-- Header & menu (same on every page) -->
     <header>
         <h1>Sunny &amp; Land<br>Beauty Salon</h1>
         <nav>
@@ -27,13 +29,14 @@
     <main>
         <section id="login" class="auth-container">
 
-            <!-- Left side: picture + list -->
+            <!-- Left box: picture and list -->
             <article class="auth-side">
 
-                <!-- Requirement: Image Map (the middle of the picture links to About Us) -->
+                <!-- Image map (the middle of the picture links to about us) -->
                 <img src="images/login-page.jpg" alt="Salon entrance door" usemap="#loginMap">
                 <map name="loginMap">
-                    <area shape="rect" coords="113,0,313,220" href="about.html" alt="About Us" title="About Us"> </map>
+                    <area shape="rect" coords="113,0,313,220" href="about.html" alt="About Us" title="About Us">
+                </map>
 
                 <h2>Welcome Back</h2>
 
@@ -45,19 +48,20 @@
                 </ul>
             </article>
 
-            <!-- Right side: the login form -->
+            <!-- Right box: the login form -->
             <article class="auth-card">
                 <h2>Login</h2>
 
                 <!-- Form: onsubmit calls our function -->
                 <form id="loginForm" novalidate onsubmit="return validateLogin()">
 
+                    <!-- Email field -->
                     <div class="form-group">
                         <label for="loginEmail">Email</label>
                         <input type="email" id="loginEmail" placeholder="example@email.com">
                         <small class="error-text" id="loginEmailError"></small>
                     </div>
-
+                    <!-- Password field -->
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
                         <input type="password" id="loginPassword" placeholder="Your password">
@@ -79,14 +83,15 @@
     </main>
 
     <footer>
-        <a href="#login">Back to top</a>
+        <a href="#top">Back to top</a>
     </footer>
 
+    <!-- External javascript file-->
     <script src="script.js"></script>
 
     <!-- Embedded JavaScript (inside the page) -->
     <script>
-        
+
 
         // Requirement: Form Validation (runs when the form is submitted)
         function validateLogin() {
@@ -95,23 +100,23 @@
         var message = document.getElementById("loginMessage");
         var isValid = true;
 
-        // Clear old errors
+        // Clear old errors mesaages
         clearError(email, "loginEmailError");
         clearError(password, "loginPasswordError");
         message.innerHTML = "";
 
         // Email check
-         var emailText = email.value.trim();
-         var atPosition = emailText.indexOf("@");
-         var dotPosition = emailText.lastIndexOf(".");
+        var emailText = email.value.trim();
+        var atPosition = emailText.indexOf("@");
+        var dotPosition = emailText.lastIndexOf(".");
 
-         if (emailText == "") {
-             showError(email, "loginEmailError", "Please enter your email");
-             isValid = false;
-         } else if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition == emailText.length - 1 || emailText.includes(" ")) {
-                showError(email, "loginEmailError", "Email is not valid");
-                isValid = false;
-            }
+        if (emailText == "") {
+        showError(email, "loginEmailError", "Please enter your email");
+        isValid = false;
+        } else if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition == emailText.length - 1 || emailText.includes(" ")) {
+        showError(email, "loginEmailError", "Email is not valid");
+        isValid = false;
+        }
 
         // Password check
         if (password.value == "") {
@@ -122,7 +127,7 @@
         isValid = false;
         }
 
-        // Requirement: Change HTML text and CSS style with JavaScript
+        // Show a green or a red message under button
         if (isValid) {
         message.innerHTML = "Welcome back! You are logged in.";
         message.style.color = "green";
